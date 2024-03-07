@@ -113,4 +113,4 @@ const SpeechVisualization = () => {
     </>
   );
 };
-export default SpeechVisualization;
+export {SpeechVisualization};

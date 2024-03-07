@@ -17,7 +17,7 @@ import {
 } from 'react-native-reanimated';
 var flubber = require('flubber');
 
-export default function MaskedText() {
+const MaskedText = () => {
   const {width, height} = useWindowDimensions();
   const center = {x: width / 2, y: height / 2};
 
@@ -103,7 +103,7 @@ export default function MaskedText() {
       </Canvas>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -113,3 +113,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#121121',
   },
 });
+
+export {MaskedText};
