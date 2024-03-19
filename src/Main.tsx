@@ -1,11 +1,9 @@
 import React from 'react';
-import MaskedText from './animations/MaskedText';
-import SpeechVisualization from './animations/SpeechVisualization';
+import {MoodInteraction} from './animations';
 
 type Props = {};
-
 const Main = (props: Props) => {
-  return <SpeechVisualization />;
+  return <MoodInteraction />;
 };
 
 export default Main;

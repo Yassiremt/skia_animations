@@ -22,7 +22,7 @@ const MaskedText = () => {
   const center = {x: width / 2, y: height / 2};
 
   const fontSize = 90;
-  const font = useFont(require('../../assets/Brandan.ttf'), fontSize);
+  const font = useFont(require('./fonts/Brandan.ttf'), fontSize);
 
   const path0 = flubber.toPathString([
     [1, 50],
@@ -90,14 +90,14 @@ const MaskedText = () => {
           backgroundColor: '#212121',
         }}>
         <SweepGradient c={center} colors={['#6DD5ED', '#01BAEF']} />
-        <Text x={15} y={80} font={font} text={'OPENER'} />
+        <Text x={0} y={80} font={font} text={'YASSIRE'} />
 
         <Group clip={path}>
-          <Text x={15} y={80} font={font} text={'OPENER'} />
+          <Text x={0} y={80} font={font} text={'YASSIRE'} />
           <SweepGradient c={center} colors={['#56AB2F', '#A8E063']} />
         </Group>
         <Group clip={pathB}>
-          <Text x={15} y={80} font={font} text={'OPENER'} />
+          <Text x={0} y={80} font={font} text={'YASSIRE'} />
           <SweepGradient c={center} colors={['#6DD5ED', '#01BAEF']} />
         </Group>
       </Canvas>
