@@ -42,7 +42,7 @@ const Thumb = ({currentPosition, size = 90, positions}: Props) => {
           color="white"
         />
         {/* I duplicated the Circle 4 times bcz I used opacity +'79',so it looks
-        good in android phones, if i don't use opacity more than '79' color doesn't appear at all 
+        good in android phones, if i use opacity more than '79' color doesn't appear at all 
         using interpolateColor (android real devices only)
         Not sure how I can fix it */}
         <Circle cx={31} cy={20} r={16} color={animatedCircleColor} />
