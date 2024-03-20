@@ -9,7 +9,7 @@ import {colors} from './colors';
 
 type Props = {
   size?: number;
-  position: SharedValue<number>;
+  currentPosition: SharedValue<number>;
   positions: {
     firstPosition: number;
     secondPosition: number;
@@ -17,21 +17,21 @@ type Props = {
   };
 };
 
-const Thumb = ({position, size = 90, positions}: Props) => {
+const Thumb = ({currentPosition, size = 90, positions}: Props) => {
   const {firstPosition, secondPosition, thirdPosition} = positions;
 
   const animatedTranslate = useDerivedValue(() => {
-    return [{translateX: position.value - 38}];
-  }, [position]);
+    return [{translateX: currentPosition.value - 38}];
+  }, [currentPosition]);
 
   const animatedCircleColor = useDerivedValue(
     () =>
       interpolateColor(
-        position.value,
+        currentPosition.value,
         [firstPosition, secondPosition, thirdPosition],
         [colors.red + '79', colors.yellow + '79', colors.green + '79'],
       ),
-    [position],
+    [currentPosition],
   );
 
   return (

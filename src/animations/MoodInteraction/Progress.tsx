@@ -8,22 +8,22 @@ type Props = {
     secondPosition: number;
     thirdPosition: number;
   };
-  positionName: SharedValue<string>;
+  currentPosition: SharedValue<number>;
 };
 
-const Progress = ({positions, positionName}: Props) => {
+const Progress = ({positions, currentPosition}: Props) => {
   const {firstPosition, secondPosition, thirdPosition} = positions;
   const leftColorProgress = useDerivedValue(
-    () => (positionName.value === 'LEFT' ? 'black' : 'gray'),
-    [positionName],
+    () => (currentPosition.value === firstPosition ? 'black' : 'gray'),
+    [currentPosition],
   );
   const centerColorProgress = useDerivedValue(
-    () => (positionName.value === 'CENTER' ? 'black' : 'gray'),
-    [positionName],
+    () => (currentPosition.value === secondPosition ? 'black' : 'gray'),
+    [currentPosition],
   );
   const RightColorProgress = useDerivedValue(
-    () => (positionName.value === 'RIGHT' ? 'black' : 'gray'),
-    [positionName],
+    () => (currentPosition.value === thirdPosition ? 'black' : 'gray'),
+    [currentPosition],
   );
   return (
     <>

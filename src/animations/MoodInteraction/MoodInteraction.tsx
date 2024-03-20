@@ -17,8 +17,6 @@ import {colors} from './colors';
 import AnimatedText from './AnimatedText';
 import Progress from './Progress';
 
-type PositionType = 'LEFT' | 'CENTER' | 'RIGHT';
-
 const MoodInteraction = () => {
   const {width} = useWindowDimensions();
   const cardWidth = width - 20;
@@ -34,7 +32,6 @@ const MoodInteraction = () => {
 
   const yellowVal = useSharedValue(0);
   const greenVal = useSharedValue(0);
-  const positionName = useSharedValue<PositionType>('LEFT');
   const position = useSharedValue(firstPosition);
 
   const panGesture = Gesture.Pan()
@@ -50,17 +47,7 @@ const MoodInteraction = () => {
         } else if (e.x > secondPosition && e.x < thirdPosition) {
           greenVal.value = (e.x - secondPosition) * 3;
         }
-
-        if (positionName.value === 'LEFT') {
-          positionName.value = 'LEFT';
-          position.value = e.x;
-        } else if (positionName.value === 'CENTER') {
-          positionName.value = 'CENTER';
-          position.value = e.x;
-        } else if (positionName.value === 'RIGHT') {
-          positionName.value = 'RIGHT';
-          position.value = e.x;
-        }
+        position.value = e.x;
       }
     })
     .onEnd(e => {
@@ -69,14 +56,11 @@ const MoodInteraction = () => {
           position.value = withTiming(firstPosition, {duration: 100});
           yellowVal.value = withTiming(0, {duration: 100});
           greenVal.value = withTiming(0, {duration: 100});
-          positionName.value = 'LEFT';
         } else if (e.x < onOfThreeWidth * 2) {
-          positionName.value = 'CENTER';
           position.value = withTiming(secondPosition, {duration: 100});
           yellowVal.value = withTiming(width, {duration: 100});
           greenVal.value = withTiming(0, {duration: 100});
         } else if (e.x < onOfThreeWidth * 3) {
-          positionName.value = 'RIGHT';
           position.value = withTiming(thirdPosition, {duration: 100});
           greenVal.value = withTiming(width, {duration: 100});
         }
@@ -121,11 +105,11 @@ const MoodInteraction = () => {
           </Canvas>
           <GestureDetector gesture={panGesture}>
             <Canvas style={styles.thumbCanvas}>
-              <Thumb position={position} positions={positions} />
+              <Thumb currentPosition={position} positions={positions} />
             </Canvas>
           </GestureDetector>
           <Canvas style={{height: 35, marginTop: 10}}>
-            <Progress positionName={positionName} positions={positions} />
+            <Progress currentPosition={position} positions={positions} />
           </Canvas>
         </View>
       </View>
