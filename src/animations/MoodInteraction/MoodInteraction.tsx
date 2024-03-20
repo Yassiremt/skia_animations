@@ -38,8 +38,9 @@ const MoodInteraction = () => {
     .onUpdate(e => {
       if (
         e.x >= firstPosition &&
-        e.x - 50 < position.value &&
-        e.x <= thirdPosition
+        e.x <= thirdPosition &&
+        position.value <= e.x + 50 &&
+        position.value >= e.x - 50
       ) {
         if (e.x > firstPosition && e.x < secondPosition) {
           yellowVal.value = (e.x - firstPosition) * 3;
