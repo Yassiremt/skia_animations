@@ -21,7 +21,7 @@ type PositionType = 'LEFT' | 'CENTER' | 'RIGHT';
 
 const MoodInteraction = () => {
   const {width} = useWindowDimensions();
-  const cardWidth = width - 10;
+  const cardWidth = width - 20;
   const cardHeight = (cardWidth * 282) / 185;
 
   const onOfThreeWidth = cardWidth / 3;
@@ -39,7 +39,11 @@ const MoodInteraction = () => {
 
   const panGesture = Gesture.Pan()
     .onUpdate(e => {
-      if (e.x + 50 > position.value && e.x - 50 < position.value) {
+      if (
+        e.x >= firstPosition &&
+        e.x - 50 < position.value &&
+        e.x <= thirdPosition
+      ) {
         if (e.x > firstPosition && e.x < secondPosition) {
           yellowVal.value = (e.x - firstPosition) * 3;
           greenVal.value = 0;
