@@ -2,6 +2,7 @@ import {StatusBar, StyleSheet, View, useWindowDimensions} from 'react-native';
 import React from 'react';
 import {Canvas, Circle} from '@shopify/react-native-skia';
 import {
+  runOnJS,
   useDerivedValue,
   useSharedValue,
   withTiming,
@@ -16,6 +17,7 @@ import {Face} from './Face';
 import {colors} from './colors';
 import AnimatedText from './AnimatedText';
 import Progress from './Progress';
+import {trigger} from 'react-native-haptic-feedback';
 
 const MoodInteraction = () => {
   const {width} = useWindowDimensions();
@@ -65,6 +67,7 @@ const MoodInteraction = () => {
           position.value = withTiming(thirdPosition, {duration: 100});
           greenVal.value = withTiming(width, {duration: 100});
         }
+        runOnJS(trigger)('soft');
       }
     });
 
