@@ -7,11 +7,7 @@ import {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import {
-  Gesture,
-  GestureDetector,
-  GestureHandlerRootView,
-} from 'react-native-gesture-handler';
+import {Gesture, GestureDetector} from 'react-native-gesture-handler';
 import Thumb from './Thumb';
 import {Face} from './Face';
 import {colors} from './colors';
@@ -75,7 +71,7 @@ const MoodInteraction = () => {
   const animatedGreenOpacity = useDerivedValue(() => greenVal.value / 300);
 
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
+    <>
       <StatusBar backgroundColor={colors.bg} />
       <View style={styles.container}>
         <View style={[styles.card, {width: cardWidth, height: cardHeight}]}>
@@ -117,7 +113,7 @@ const MoodInteraction = () => {
           </Canvas>
         </View>
       </View>
-    </GestureHandlerRootView>
+    </>
   );
 };
 
