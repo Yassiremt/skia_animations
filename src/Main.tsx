@@ -1,9 +1,9 @@
 import React from 'react';
-import {MoodInteraction} from './animations';
+import {MoodInteraction, ZoOnboarding} from './animations';
 
 type Props = {};
 const Main = (props: Props) => {
-  return <MoodInteraction />;
+  return <ZoOnboarding />;
 };
 
 export default Main;
